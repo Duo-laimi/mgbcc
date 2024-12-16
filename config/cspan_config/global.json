@@ -1,0 +1,15 @@
+{
+  "src":"D:/supeng/dataset",
+  "config": null,
+  "seed": 0,
+  "device": "cuda",
+  "key_feature": "data",
+  "key_label": "labels",
+  "epochs": 150,
+  "start_dual_prediction": 20,
+  "pretrain_epochs": 0,
+  "learning_rate": 1e-4,
+  "weight_decay": 0.02,
+  "batch_size": 512,
+  "print_interval": 10
+}

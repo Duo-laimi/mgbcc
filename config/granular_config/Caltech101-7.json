@@ -1,0 +1,33 @@
+{
+  "parent": "smalldata",
+  "dataset": "Caltech101-7",
+  "batch_size": 1474,
+  "input_dims": [48, 40, 254, 1984, 512, 928],
+  "num_samples": 1474,
+  "latent_dim": 128,
+  "loss_weights": [1, 1, 0],
+  "autoencoder": {
+      "mid_archs": [
+        [2000, 500, 500],
+        [2000, 500, 500]],
+      "mid_archs1": [
+        [2000, 500, 500],
+        [2000, 500, 500],
+        [2000, 500, 500],
+        [2000, 500, 500],
+        [2000, 500, 500],
+        [2000, 500, 500]],
+      "activation": "relu",
+      "batch_norm": true
+  },
+  "prediction": {
+      "mid_archs": [
+        [128, 256, 128],
+        [128, 256, 128]],
+      "activation": "relu",
+      "batch_norm": true
+  },
+  "use_linear_projection": true,
+  "select_views": [3, 4],
+  "normalize": true
+}

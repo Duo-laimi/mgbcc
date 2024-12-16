@@ -1,0 +1,30 @@
+{
+  "parent": "smalldata",
+  "dataset": "BBCSport",
+  "@dataset": "BBCSport 要想取得比较好的性能，只能使用单层线性投影，并且不能对原数据归一化，也不加入重构损失",
+  "batch_size": 544,
+  "input_dims": [3183, 3203],
+  "num_samples": 544,
+  "latent_dim": 256,
+  "loss_weights": [1, 0, 0],
+  "autoencoder": {
+      "mid_archs": [[],
+                    []],
+      "@mid_archs": "这样写表示单层线性投影",
+      "mid_archs1": [[1024, 1024, 1024],
+                    [1024, 1024, 1024]],
+      "mid_archs2": [[2000, 500, 500],
+                    [2000, 500, 500]],
+      "activation": null,
+      "batch_norm": false
+  },
+  "prediction": {
+      "mid_archs": [[128, 256, 128], [128, 256, 128]],
+      "activation": null,
+      "batch_norm": false
+  },
+  "use_linear_projection": true,
+  "select_views": null,
+  "normalize": true,
+  "@normalize": "不对原数据进行归一化处理"
+}

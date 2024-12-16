@@ -1,0 +1,27 @@
+{
+  "parent": "smalldata",
+  "dataset": "100Leaves",
+  "batch_size": 1600,
+  "input_dims": [64, 64, 64],
+  "num_samples": 1600,
+  "latent_dim": 64,
+  "loss_weights": [1, 1, 0],
+  "autoencoder": {
+      "mid_archs": [
+        [2000, 500, 500],
+        [2000, 500, 500],
+        [2000, 500, 500]],
+      "activation": "relu",
+      "batch_norm": true
+  },
+  "prediction": {
+      "mid_archs": [
+        [128, 256, 128],
+        [128, 256, 128]],
+      "activation": "relu",
+      "batch_norm": true
+  },
+  "use_linear_projection": false,
+  "select_views": null,
+  "normalize": true
+}

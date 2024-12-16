@@ -1,0 +1,29 @@
+{
+  "parent": "bigdata",
+  "dataset": "ALOI_100",
+  "input_dims": [77, 13, 64, 125],
+  "num_samples": 10800,
+  "batch_size": 512,
+  "latent_dim": 128,
+  "alpha": 9,
+  "loss_weights": [1, 1, 0],
+  "autoencoder": {
+      "mid_archs": [
+        [2000, 500, 500],
+        [2000, 500, 500],
+        [2000, 500, 500],
+        [2000, 500, 500]],
+      "activation": "relu",
+      "batch_norm": true
+  },
+  "prediction": {
+      "mid_archs": [
+        [128, 256, 128],
+        [128, 256, 128]],
+      "activation": "relu",
+      "batch_norm": true
+  },
+  "use_linear_projection": false,
+  "select_views": null,
+  "normalize": true
+}

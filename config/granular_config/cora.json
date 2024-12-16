@@ -1,0 +1,27 @@
+{
+  "parent": "smalldata",
+  "dataset": "cora",
+  "batch_size": 512,
+  "input_dims": [2708, 1433],
+  "num_samples": 2708,
+  "latent_dim": 64,
+  "alpha": 9,
+  "loss_weights": [1, 10, 0],
+  "autoencoder": {
+      "mid_archs": [
+        [2000, 500, 500],
+        [2000, 500, 500]],
+      "activation": "relu",
+      "batch_norm": true
+  },
+  "prediction": {
+      "mid_archs": [
+        [128, 256, 128],
+        [128, 256, 128]],
+      "activation": "relu",
+      "batch_norm": true
+  },
+  "use_linear_projection": true,
+  "select_views": null,
+  "normalize": false
+}

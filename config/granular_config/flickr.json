@@ -1,0 +1,27 @@
+{
+  "parent": "smalldata",
+  "dataset": "flickr",
+  "use_batch": false,
+  "input_dims": [2882, 166],
+  "num_samples": 1028,
+  "latent_dim": 16,
+  "alpha": 9,
+  "loss_weights": [1, 1, 0],
+  "autoencoder": {
+      "mid_archs": [
+        [2000, 500, 500],
+        [2000, 500, 500]],
+      "activation": "relu",
+      "batch_norm": true
+  },
+  "prediction": {
+      "mid_archs": [
+        [128, 256, 128],
+        [128, 256, 128]],
+      "activation": "relu",
+      "batch_norm": true
+  },
+  "use_linear_projection": true,
+  "select_views": null,
+  "normalize": true
+}

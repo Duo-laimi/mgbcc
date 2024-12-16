@@ -1,0 +1,30 @@
+{
+  "parent": "smalldata",
+  "dataset": "MSRC-v1",
+  "use_batch": false,
+  "input_dims": [24, 576, 512, 256, 254],
+  "num_samples": 210,
+  "latent_dim": 16,
+  "alpha": 9,
+  "loss_weights": [1, 1, 0],
+  "autoencoder": {
+      "mid_archs": [
+        [1024, 256, 256],
+        [1024, 256, 256],
+        [1024, 256, 256],
+        [1024, 256, 256],
+        [1024, 256, 256]],
+      "activation": "relu",
+      "batch_norm": true
+  },
+  "prediction": {
+      "mid_archs": [
+        [128, 256, 128],
+        [128, 256, 128]],
+      "activation": "relu",
+      "batch_norm": true
+  },
+  "use_linear_projection": false,
+  "select_views": null,
+  "normalize": true
+}
