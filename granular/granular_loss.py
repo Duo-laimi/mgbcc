@@ -1,7 +1,7 @@
 import torch
 import numpy as np
 from granular.base import GranularBall, GBList, MVGBList
-from granular.tools import relation_of_views_gblists, merge_tensors
+from granular.tools import relation_of_views_gblists, merge_tensors, relation_of_views_gblists_tensor
 
 
 class GranularContrastiveLoss(torch.nn.Module):
@@ -53,7 +53,7 @@ class MultiviewGCLoss(torch.nn.Module):
                 # 计算掩码
                 # mask_j_intra = views[j].affinity()
                 mask_j_intra = torch.eye(len(views[j]), device=device)
-                mask_inter = relation_of_views_gblists(views[i], views[j])
+                mask_inter = relation_of_views_gblists_tensor(views[i], views[j])
                 # 两个视图的粒球数量
                 ni, nj = len(views[i]), len(views[j])
                 # 合并视图内和视图间的掩码矩阵
@@ -61,7 +61,7 @@ class MultiviewGCLoss(torch.nn.Module):
                 # neg_mask = 1 - pos_mask
                 neg_mask = torch.ones_like(pos_mask).to(device) - pos_mask
                 num_ins = ni + nj
-                idx = torch.arange(0, num_ins)
+                # idx = torch.arange(0, num_ins)
                 # 修正正样本对掩码
                 # pos_mask[idx, idx] = 0
                 centers_i = views[i].get_centers()

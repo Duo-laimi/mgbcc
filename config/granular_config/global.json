@@ -1,5 +1,5 @@
 {
-  "src":"D:\\supeng\\dataset\\mvdata",
+  "src":"./data",
   "config": null,
   "seed": 42,
   "p": 2,

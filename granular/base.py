@@ -33,10 +33,10 @@ class GranularBall:
         if p == 1:
             y_part = np.arange(data.shape[0])
         else:
-            kmeans = KMeans(n_clusters=k, n_init=10, random_state=42)
+            kmeans = KMeans(n_clusters=k, n_init="auto", random_state=42)
             y_part = kmeans.fit_predict(data)
         # 根据标签对样本进行划分
-        y_part = torch.from_numpy(y_part)
+        y_part = torch.from_numpy(y_part).to(torch.long)
         sub_balls = []
         for i in range(k):
             indices = torch.where(y_part == i)
@@ -45,7 +45,7 @@ class GranularBall:
             sub_indices = self.indices[indices]
             new_ball = GranularBall(sub_data, sub_labels, sub_indices)
             sub_balls.append(new_ball)
-        return sub_balls
+        return sub_balls, y_part
 
 
 class GBList:
@@ -55,6 +55,7 @@ class GBList:
         self.data = data
         self.labels = labels
         self.indices = np.arange(data.shape[0])
+        self.y_parts = None
         self.granular_balls = [GranularBall(data, labels, self.indices)]  # gbs is initialized with all data
         self.split_granular_balls(p)
 
@@ -69,10 +70,14 @@ class GBList:
         Split the balls, initialize the balls list.
         :param p: If the number of samples of a ball is less than this value, stop splitting.
         """
-        gb_list = []
-        for ball in self:
-            gb_list.extend(ball.split_balls(p))
+        # gb_list = []
+        # for ball in self:
+        #     gb_list.extend(ball.split_balls(p))
+        # self.granular_balls = gb_list
+        gb_list, y_parts = self[0].split_balls(p)
         self.granular_balls = gb_list
+        self.y_parts = y_parts
+
 
     def get_centers(self):
         """
